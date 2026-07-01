@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram bot for monitoring torrent RSS feeds
+After=network.target
+
+[Service]
+Type=simple
+User=botuser
+WorkingDirectory=/opt/torrent-rss-bot
+EnvironmentFile=/opt/torrent-rss-bot/.env
+ExecStart=/opt/torrent-rss-bot/venv/bin/python bot.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
